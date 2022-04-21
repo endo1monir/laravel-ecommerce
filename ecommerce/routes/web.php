@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BackEnd\BackendController;
 use App\Http\Controllers\FrontEnd\FrontEndController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -22,7 +23,7 @@ use Illuminate\Support\Facades\Route;
      Route::get('/detail',[FrontEndController::class,'detail'])->name('front.detail');
     Route::get('/checkout',[FrontEndController::class,'checkout'])->name('front.checkout');
     Route::get('/shop',[FrontEndController::class,'shop'])->name('front.shop');
-
+Route::get('/admin/login',[BackendController::class,'login'])->name('back.login');
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
