@@ -24,6 +24,8 @@ use Illuminate\Support\Facades\Route;
     Route::get('/checkout',[FrontEndController::class,'checkout'])->name('front.checkout');
     Route::get('/shop',[FrontEndController::class,'shop'])->name('front.shop');
 Route::get('/admin/login',[BackendController::class,'login'])->name('back.login');
+Route::get('/admin/index',[BackendController::class,'index'])->name('back.index');
+Route::get('/admin/forget-password',[BackendController::class,'forget_password'])->name('back.forget-password');
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
