@@ -43,14 +43,25 @@
                                     class="fas fa-user me-1 text-gray fw-normal"></i>Login</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ route('register') }}"> <i
                                     class="fas fa-user me-1 text-gray fw-normal"></i>Register</a></li>
-
-                        @elseguest
+                    @else
                         <li class="nav-item dropdown">
-<a href="" class="nav-link dropdown-toggle" id="authDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    <i class="fas fa-user-alt mr-1 text-gray">
-        welcome,{{ auth()->user()->first_name }}
-    </i>
-</a>
+                            <a href="#" class="nav-link dropdown-toggle" id="authDropdown" data-bs-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-user-alt mr-1 text-gray">
+                                    welcome,{{ auth()->user()->full_name }}
+                                </i>
+
+                            </a>
+                            <div class="dropdown-menu mt-3" aria-labelledby="authDropdown">
+                                <a href="#" class="dropdown-item border-0">My profile</a>
+                                <a href="javscript:void(0);" class="dropdown-item border-0"
+                                    onclick="event.preventDefault() document.getElementById('logout_form').submit()">Logout</a>
+                                <form action="{{ route('logout') }}" method="post" id="logout_form"
+                                    class="d-none">
+                                    @csrf
+                                </form>
+                            </div>
+
                         </li>
                     @endguest
 
@@ -60,3 +71,15 @@
         </nav>
     </div>
 </header>
+<div class="dropdown show">
+    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+        data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        Dropdown link
+    </a>
+
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        <a class="dropdown-item" href="#">Action</a>
+        <a class="dropdown-item" href="#">Another action</a>
+        <a class="dropdown-item" href="#">Something else here</a>
+    </div>
+</div>

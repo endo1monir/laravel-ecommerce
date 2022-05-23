@@ -1,4 +1,11 @@
 @extends('layouts.app')
+@section('script')
+
+@endsection
+@section('style')
+{{-- <script src="{{ asset('frontend/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script> --}}
+<link rel="stylesheet" href="{{ asset('frontend/vendor/bootstrap/css/bootstrap.min.css') }}">
+@endsection
 @section('content')
 <section class="hero pb-3 bg-cover bg-center d-flex align-items-center"
 style="background: url({{ asset('frontend/img/hero-banner-alt.jpg') }})">
