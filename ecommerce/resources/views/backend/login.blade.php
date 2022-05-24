@@ -1,7 +1,7 @@
 @extends('layouts.admin-auth')
 @section('content')
-       <!-- Outer Row -->
-       <div class="row justify-content-center">
+    <!-- Outer Row -->
+    <div class="row justify-content-center">
 
         <div class="col-xl-10 col-lg-12 col-md-9">
 
@@ -15,32 +15,39 @@
                                 <div class="text-center">
                                     <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
                                 </div>
-                                <form class="user">
+                                <form method="POST" action="{{ route('login') }}" class="user">
+                                    @csrf
                                     <div class="form-group">
-                                        <input type="email" class="form-control form-control-user"
-                                            id="exampleInputEmail" aria-describedby="emailHelp"
+                                        <input type="text" class="form-control form-control-user" id="username"
+                                            name="username" aria-describedby="emailHelp"
                                             placeholder="Enter Email Address...">
+                                        @error('username')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
                                     </div>
                                     <div class="form-group">
                                         <input type="password" class="form-control form-control-user"
-                                            id="exampleInputPassword" placeholder="Password">
-                                    </div>
+                                            id="exampleInputPassword" name="password" placeholder="Password">
+                                    @error('password')
+                                    <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                        </div>
                                     <div class="form-group">
                                         <div class="custom-control custom-checkbox small">
-                                            <input type="checkbox" class="custom-control-input" id="customCheck">
-                                            <label class="custom-control-label" for="customCheck">Remember
+                                            <input type="checkbox" class="custom-control-input" name="remember" id="remember" {{ old('remember')? 'checked':"" }}>
+                                            <label class="custom-control-label" for="remember">Remember
                                                 Me</label>
                                         </div>
                                     </div>
-                                    <a href="index.html" class="btn btn-primary btn-user btn-block">
+                                    <button type="submit" name="login" class="btn btn-primary btn-user btn-block">
                                         Login
-                                    </a>
+                                    </button>
                                     <hr>
 
                                 </form>
                                 <hr>
                                 <div class="text-center">
-                                    <a class="small" href="forgot-password.html">Forgot Password?</a>
+                                    <a class="small" href="{{ route('back.forget-password') }}">Forgot Password?</a>
                                 </div>
                                 <div class="text-center">
                                     <a class="small" href="register.html">Create an Account!</a>
@@ -54,5 +61,4 @@
         </div>
 
     </div>
-        @endsection
-
+@endsection
