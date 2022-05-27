@@ -32,9 +32,9 @@ class LoginController extends Controller
         return 'username';
     }
     public function redirectTo(){
-if(auth()->user()->roles()->first()->allowed_route !=''){
-
-return $this->redirectTo=auth()->user()->roles()->allowed_route.'/index';
+if(auth()->user()->roles->first()->allowed_route !=''){
+// ddd(auth()->user()->roles->first()->allowed_route);
+return $this->redirectTo=auth()->user()->roles->first()->allowed_route.'/index';
 
 }
     }
