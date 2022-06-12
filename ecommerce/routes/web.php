@@ -29,7 +29,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::get('/login', [BackendController::class, 'login'])->name('login');
     Route::get('/forget-password', [BackendController::class, 'forget_password'])->name('forget-password');
     });
-    Route::get('/index', [BackendController::class, 'index'])->name('index')->middleware('roles');
+    Route::group(['middleware'=>['roles','role:admin|supervisor']],function(){
+        Route::get('/index', [BackendController::class, 'index'])->name('index')->middleware('roles');
+        Route::get('/', [BackendController::class, 'index'])->name('route_index')->middleware('roles');
+    });
+
 
 });
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
