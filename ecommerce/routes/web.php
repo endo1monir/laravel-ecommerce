@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BackEnd\BackendController;
+use App\Http\Controllers\BackEnd\ProductCategoriesController;
 use App\Http\Controllers\FrontEnd\FrontEndController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -32,6 +33,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::group(['middleware'=>['roles','role:admin|supervisor']],function(){
         Route::get('/index', [BackendController::class, 'index'])->name('index')->middleware('roles');
         Route::get('/', [BackendController::class, 'index'])->name('route_index')->middleware('roles');
+    Route::resource('product_categories',ProductCategoriesController::class);
     });
 
 

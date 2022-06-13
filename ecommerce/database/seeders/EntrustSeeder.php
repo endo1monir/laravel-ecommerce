@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Role;
 use App\Models\User;
+use App\Permission;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
 
@@ -80,5 +81,39 @@ class EntrustSeeder extends Seeder
             $user = User::factory()->create();
             $user->attachRole($customerRole);
         }
+        //main permision
+        $manageMain = Permission::create([
+            'name' => 'main',
+            'display_name' => 'Main',
+            'description' => '',
+            'route' => 'index',
+            'module' => 'index',
+            'as' => 'index',
+            'icon' => 'fas fa-home',
+            'parent' => '0',
+            'parent_original' => '0',
+            'sidebar_link' => '1',
+            'appear' => '1',
+            'ordering' => '1',
+        ]);
+        $manageMain->parent_show = $manageMain->id;
+        $manageMain->save();
+        //product categories
+        $manageProductCategories = Permission::create([
+            'name' => 'manage_product_categories',
+            'display_name' => 'Category',
+            'description' => '',
+            'route' => 'product_categories',
+            'module' => 'product_categories',
+            'as' => 'product_categories.index',
+            'icon' => 'fas fa-file-archive',
+            'parent' => '0',
+            'parent_original' => '0',
+            'sidebar_link' => '1',
+            'appear' => '1',
+            'ordering' => '5',
+        ]);
+        $manageProductCategories->parent_show = $manageProductCategories->id;
+        $manageProductCategories->save();
     }
 }
