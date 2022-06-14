@@ -115,5 +115,91 @@ class EntrustSeeder extends Seeder
         ]);
         $manageProductCategories->parent_show = $manageProductCategories->id;
         $manageProductCategories->save();
+        //Show product categories
+        $manageProductCategories = Permission::create([
+            'name' => 'show_product_categories',
+            'display_name' => 'Categories',
+            'description' => '',
+            'route' => 'product_categories',
+            'module' => 'product_categories',
+            'as' => 'product_categories.index',
+            'icon' => 'fas fa-file-archive',
+            'parent' => $manageProductCategories->id,
+            'parent_show'=>$manageProductCategories->id,
+            'parent_original' => $manageProductCategories->id,
+            'sidebar_link' => '1',
+            'appear' => '1',
+
+        ]);
+
+        //create product categories
+        $manageProductCategories = Permission::create([
+            'name' => 'create_product_categories',
+            'display_name' => 'Create Categories',
+            'description' => '',
+            'route' => 'product_categories',
+            'module' => 'product_categories',
+            'as' => 'product_categories.create',
+            'icon' => null,
+            'parent' => $manageProductCategories->id,
+            'parent_show'=>$manageProductCategories->id,
+            'parent_original' => $manageProductCategories->id,
+            'sidebar_link' => '1',
+            'appear' => '0',
+
+        ]);
+        //create product categories
+        $displayProductCategories = Permission::create([
+            'name' => 'display_product_categories',
+            'display_name' => 'Display Category',
+            'description' => '',
+            'route' => 'product_categories',
+            'module' => 'product_categories',
+            'as' => 'product_categories.show',
+            'icon' => null,
+            'parent' => $manageProductCategories->id,
+            'parent_show'=>$manageProductCategories->id,
+            'parent_original' => $manageProductCategories->id,
+            'sidebar_link' => '1',
+            'appear' => '0',
+
+        ]);
+        //update product categories
+        $displayProductCategories = Permission::create([
+            'name' => 'update_product_categories',
+            'display_name' => 'update Category',
+            'description' => '',
+            'route' => 'product_categories',
+            'module' => 'product_categories',
+            'as' => 'product_categories.edit',
+            'icon' => null,
+            'parent' => $manageProductCategories->id,
+            'parent_show'=>$manageProductCategories->id,
+            'parent_original' => $manageProductCategories->id,
+            'sidebar_link' => '1',
+            'appear' => '0',
+
+        ]);
+        //delete product categories
+        $displayProductCategories = Permission::create([
+            'name' => 'delete_product_categories',
+            'display_name' => 'delete Category',
+            'description' => '',
+            'route' => 'product_categories',
+            'module' => 'product_categories',
+            'as' => 'product_categories.destroy',
+            'icon' => null,
+            'parent' => $manageProductCategories->id,
+            'parent_show'=>$manageProductCategories->id,
+            'parent_original' => $manageProductCategories->id,
+            'sidebar_link' => '1',
+            'appear' => '0',
+
+        ]);
+
+
+
+
+
     }
 }
