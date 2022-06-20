@@ -4,6 +4,7 @@ namespace App\Http\Controllers\BackEnd;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Route;
 
 class ProductCategoriesController extends Controller
 {
@@ -15,6 +16,7 @@ class ProductCategoriesController extends Controller
     public function index()
     {
         //
+        return view('backend.product_categories.index');
     }
 
     /**
@@ -25,6 +27,7 @@ class ProductCategoriesController extends Controller
     public function create()
     {
         //
+        return view('backend.product_categories.create');
     }
 
     /**
@@ -47,6 +50,7 @@ class ProductCategoriesController extends Controller
     public function show($id)
     {
         //
+        return view('backend.product_categories.show');
     }
 
     /**
@@ -58,6 +62,7 @@ class ProductCategoriesController extends Controller
     public function edit($id)
     {
         //
+        return view('backend.product_categories.edit');
     }
 
     /**

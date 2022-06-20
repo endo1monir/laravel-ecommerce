@@ -2,9 +2,12 @@
 
 namespace Database\Seeders;
 
+
 use App\Models\Role;
 use App\Models\User;
-use App\Permission;
+
+use App\Models\ProductCategory;
+use App\Models\Permission;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
 

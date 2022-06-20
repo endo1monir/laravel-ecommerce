@@ -1,5 +1,5 @@
-<?php namespace App;
-
+<?php
+namespace App\Models;
 use Mindscms\Entrust\EntrustPermission;
 
 class Permission extends EntrustPermission
@@ -15,6 +15,11 @@ class Permission extends EntrustPermission
     {
         return $this->hasMany(Permission::class, 'parent', 'id');
     }
+    public function appearedChildren()
+    {
+        return $this->hasMany(Permission::class, 'parent', 'id')->where('appear', 1);
+    }
+
 
     public static function tree( $level = 1 )
     {
@@ -22,6 +27,14 @@ class Permission extends EntrustPermission
             ->whereParent(0)
             ->whereAppear(1)
             ->whereSidebarLink(1)
+            ->orderBy('ordering', 'asc')
+            ->get();
+    }
+    public static function assigned_children( $level = 1 )
+    {
+        return static::with(implode('.', array_fill(0, $level, 'assigned_children')))
+            ->whereParentOriginal(0)
+            ->whereAppear(1)
             ->orderBy('ordering', 'asc')
             ->get();
     }

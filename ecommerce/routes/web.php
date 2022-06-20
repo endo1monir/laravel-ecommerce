@@ -28,14 +28,12 @@ Auth::routes(['verify' => true]);
 Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::group(['middleware' => 'guest'], function () {
         Route::get('/login', [BackendController::class, 'login'])->name('login');
-    Route::get('/forget-password', [BackendController::class, 'forget_password'])->name('forget-password');
+        Route::get('/forget-password', [BackendController::class, 'forget_password'])->name('forget-password');
     });
-    Route::group(['middleware'=>['roles','role:admin|supervisor']],function(){
+    Route::group(['middleware' => ['roles', 'role:admin|supervisor']], function () {
         Route::get('/index', [BackendController::class, 'index'])->name('index')->middleware('roles');
         Route::get('/', [BackendController::class, 'index'])->name('route_index')->middleware('roles');
-    Route::resource('product_categories',ProductCategoriesController::class);
+        Route::resource('product_categories', ProductCategoriesController::class);
     });
-
-
 });
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
