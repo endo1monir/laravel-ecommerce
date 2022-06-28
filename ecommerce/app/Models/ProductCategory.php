@@ -9,7 +9,10 @@ class ProductCategory extends Model
 {
     use HasFactory, Sluggable;
 protected $guarded=[];
-   /**
+function products(){
+    return $this->hasMany(Product::class);
+}
+/**
      * Return the sluggable configuration array for this model.
      *
      * @return array
